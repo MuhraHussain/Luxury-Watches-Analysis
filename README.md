@@ -7,7 +7,8 @@ Cryptocurrency Prices Analysis: Data Cleaning, Preparation, Analysis, and Intera
 - [Data Overview](#data-overview)
 - [Tools](#tools)
 - [Data Cleaning and Analysis](#data-cleaning-and-analysis)
-- [Results and Insights](#results-and-insights)
+- [Key Findings](#key-findings)
+- [Business Insights](#business-insights)
 - [Visualization](#visualization)
   
 ## Project Overview
@@ -951,6 +952,80 @@ new_size = (df['size'] >= 20) & (df['size'] <= 70)  # Adjust range as needed, re
 df = df[new_size]  # Keep only rows within the valid range
 ```
 
+Get Count of Each Size of Watches
+
+```python
+print(df['Diameter (mm)'].value_counts())
+```
+
+Output:
+
+    Diameter (mm)
+    40.0    39509
+    41.0    29749
+    42.0    29395
+    36.0    21207
+    44.0    17492
+    39.0    12386
+    38.0    10407
+    43.0     9842
+    34.0     9690
+    45.0     7677
+    35.0     6564
+    26.0     5586
+    37.0     5504
+    31.0     5082
+    33.0     4406
+    46.0     4025
+    28.0     3259
+    32.0     2746
+    30.0     2681
+    29.0     2495
+    27.0     2183
+    47.0     2079
+    24.0     2024
+    25.0     1953
+    48.0     1899
+    22.0     1209
+    20.0     1107
+    23.0     1045
+    50.0      698
+    49.0      555
+    21.0      446
+    51.0      248
+    52.0      182
+    55.0      117
+    54.0       83
+    53.0       82
+    56.0       25
+    60.0       23
+    57.0       22
+    65.0       19
+    58.0       15
+    59.0       12
+    69.0        5
+    61.0        4
+    64.0        4
+    66.0        3
+    70.0        3
+    63.0        2
+    68.0        1
+    67.0        1
+    62.0        1
+    Name: count, dtype: int64
+
+Get Average Size of Watches
+
+```python
+average_size = df['Diameter (mm)'].mean()
+print(f"The average size of the watches is {average_size:.2f} mm.")
+```
+
+Output:
+
+    The average size of the watches is 38.57 mm.
+
+
 Rename Columns
 
 This snippet renames the columns in the DataFrame to more descriptive and user-friendly names.
@@ -1215,6 +1290,34 @@ luxury_watches = df
 luxury_watches.to_csv(r"C:\Users\corvi\OneDrive\Desktop\Data Sets\Luxury_Watches_Final.csv", index=False)
 ```
 
-## Results and Insights
+## Key Findings
+
+- Price Distribution:
+    - The prices of luxury watches vary widely. The majority of watches fall within a certain range, but a few outliers represent extremely high-value watches.
+
+- Size Insights:
+    - The sizes of watches predominantly range between 34–45 mm, with 40 mm being the most popular, indicating this range is the most popular for luxury watches.
+
+- Condition Insights:
+    - Most watches are listed as 'New' or 'Very Good', suggesting that the majority of items are in premium condition.
+ 
+- Popular Brands and Models:
+    - Brands such as Rolex, Patek Philippe, and Omega dominate the dataset. Within these brands, certain models stand out for their popularity and frequency.
+
+- Materials Used:
+    - Case and bracelet materials such as stainless steel and gold are the most common. Rare materials like titanium and ceramic appear less frequently but are associated          with higher prices.
+
+## Business Insights
+
+- Market Demand:
+    - The prevalence of mid-sized watches (34–45 mm) indicates strong demand for standard sizes. Brands can consider focusing marketing efforts around this range.
+
+- Target Pricing:
+    - With a clearer understanding of price distribution, pricing strategies for luxury watches can be optimized to target the most frequent price ranges while leveraging          the value of premium-priced items.
+
+- Material Preferences:
+    - Highlighting the most popular materials like stainless steel in marketing campaigns could attract more customers. Rare materials could be used to target high-net-worth       individuals.
 
 ## Visualization
+
+Interactive Tableau dashboard available here
