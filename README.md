@@ -1,6 +1,7 @@
 # Luxury-Watches-Analysis
 Cryptocurrency Prices Analysis: Data Cleaning, Preparation, Analysis, and Interactive Visualization Using Python and Tableau
 
+
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Data Sources](#data-sources)
@@ -10,14 +11,17 @@ Cryptocurrency Prices Analysis: Data Cleaning, Preparation, Analysis, and Intera
 - [Key Findings](#key-findings)
 - [Business Insights](#business-insights)
 - [Visualization](#visualization)
+
   
 ## Project Overview
 
 This project involves analyzing a dataset of luxury watch listings to uncover insights into the market. The dataset contains 14 columns and 284,492 rows, including information about the watch brand, model, price, movement type, case material, year of production, and more. The goal of this analysis was to clean and visualize the data to answer key business questions, such as identifying the most popular brands, the relationship between price and condition, and price distribution across different watch characteristics.
 
+
 ## Data Sources
 
 Source: The dataset used for this analysis is the "Watches.csv" file, found on Kaggle. The final version is "Luxury_Watches_Final.csv".
+
 
 ## Data Overview
 
@@ -37,6 +41,7 @@ The dataset consists of the following columns:
 - **sex:** Gender for which the watch is intended
 - **size:** Diameter of the watch in millimeters
 
+
 ## Business Questions Explored
 
 - Price Distribution: How is the price of luxury watches distributed across different brands and conditions?
@@ -52,6 +57,7 @@ The dataset consists of the following columns:
 - **Excel**: Dataset for preliminary data inspection
 - **Python**: Pandas for data cleaning and manipulation in jupyter notebook 
 - **Tableau**: Visualization with interactive dashboard
+
 
 ## Data Cleaning and Analysis
 
@@ -283,17 +289,20 @@ Output:
   <p>284491 rows × 14 columns</p>
   </div>
 
+
 Drop "Unnamed" column
 
 ```python
 df.drop(columns = 'Unnamed: 0', inplace = True)
 ```
 
+
 Remove duplicates
 
 ```python
 df = df.drop_duplicates()
 ```
+
 
 Display the dimensions of the DataFrame. The .shape attribute returns a tuple representing the number of rows and columns in the DataFrame.
 
@@ -304,6 +313,7 @@ print(df.shape)
 Output:
 
     (273093, 13)
+
 
 Display information about the DataFrame.
 
@@ -334,11 +344,13 @@ Output:
         dtypes: object(13)
         memory usage: 29.2+ MB
 
+
 Check for missing values
 
 ```python
 df.isnull().sum()
 ```
+
 Output:
 
     name          66231
@@ -355,6 +367,7 @@ Output:
     size          22734
     condition    207835
     dtype: int64
+
 
 Display count of unique name values
 
@@ -378,6 +391,7 @@ Output:
     Zenith El Primero Chronomaster\n03.2040.400/69.c494                                        1
     Name: count, Length: 148689, dtype: int64
 
+
 Display count of unique price values
 
 ```python
@@ -399,6 +413,7 @@ Output:
     $64,993                 1
     $45,998                 1
     Name: count, Length: 36830, dtype: int64
+
 
 Display count of unique brand values
 
@@ -439,6 +454,7 @@ Output:
     Ebel                       1
     Name: count, dtype: int64
 
+
 Display count of unique model values
 
 ```python
@@ -460,6 +476,7 @@ Output:
     Artelier Translucent Skeleton       1
     Tangente Neomatik                   1
     Name: count, Length: 948, dtype: int64
+
 
 Display count of unique reference values
 
@@ -498,8 +515,8 @@ Output:
     Manual winding     7345
     Name: count, dtype: int64
 
-Display count of unique case material values
 
+Display count of unique case material values
 
 ```python
 print(df['casem'].value_counts())
@@ -526,6 +543,7 @@ Output:
     Palladium         13
     Tungsten           3
     Name: count, dtype: int64
+
 
 Display count of unique bracelet material values
 
@@ -561,6 +579,7 @@ Output:
     Shark skin            9
     Name: count, dtype: int64
 
+
 Display count of unique year of production values
 
 ```python
@@ -583,6 +602,7 @@ Output:
     1650 (Approximation)                1
     Name: count, Length: 410, dtype: int64
 
+
 Display count of unique cond values
 
 ```python
@@ -601,6 +621,7 @@ Output:
     Incomplete       42
     Name: count, dtype: int64
 
+
 Display count of unique sex values
 
 ```python
@@ -613,6 +634,7 @@ Output:
     Men's watch/Unisex    155235
     Women's watch          28770
     Name: count, dtype: int64
+
 
 Display count of unique size values
 
@@ -661,6 +683,9 @@ Get summary of numerical columns in the DataFrame
 ```python
 df.describe()
 ```
+
+Output:
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -757,7 +782,6 @@ print(df.head())
 
 Output:
 
-
                                                     name      price  \
     0  Audemars Piguet Royal Oak Offshore Chronograph...   $43,500    
     1  Audemars Piguet Royal Oak Selfwinding\n39mm Bl...   $71,500    
@@ -786,17 +810,20 @@ Output:
     3  Men's watch/Unisex       38 mm       NaN  
     4  Men's watch/Unisex  42 x 54 mm       NaN  
 
+
 Remove Line Breaks (\n and \r) from Strings
 
 ```python
 df = df.map(lambda x: x.replace('\n', '').replace('\r', '') if isinstance(x, str) else x)
 ```
 
+
 Check all columns for \n or \r
 
 ```python
 rows_with_new_lines = df.apply(lambda x: x.astype(str).str.contains('\n|\r', na=False)).any(axis=1)
 ```
+
 
 Display rows with \n or \r
 
@@ -830,11 +857,13 @@ Output:
 </table>
 </div>
 
+
 Replace NaN values with "Unknown"
 
 ```python
 df = df.fillna('Unknown') 
 ```
+
 
 Convert data type of "price" column to string 
 
@@ -842,11 +871,13 @@ Convert data type of "price" column to string
 df['price'] = df['price'].astype(str)
 ```
 
+
 Remove "$" sign, commas ",", and convert cleaned data back to numeric data type. By using errors='coerce', any value that cannot be converted into a number (like 'Unknown') is converted to NaN.
 
 ```python
 df['price'] = pd.to_numeric(df['price'].str.replace('$', '').str.replace(',', '').fillna('Unknown'), errors='coerce')
 ```
+
 
 Create a New 'new_condition' Column by Combining 'cond' and 'condition'
 
@@ -865,11 +896,13 @@ This code updates the values in the 'condition' column of the DataFrame df where
 df.loc[df['new_condition'] == 'incomplete', 'condition'] = 'Unknown'
 ```
 
+
 Drop Columns 'cond' and 'condition'
 
 ```python
 df = df.drop(['cond', 'condition'], axis=1)
 ```
+
 
 Extract Year of Production
 
@@ -904,6 +937,7 @@ Drop "yop" Column
 df = df.drop('yop', axis=1)
 ```
 
+
 Clean and Standardize "size" Column
 
 ```python
@@ -917,18 +951,20 @@ df['size'] = df['size'].apply(lambda x: str(x)
     .rstrip('mm')
 )
 ```
+The above code does the following:
 
-- Convert value into string
-- Remove ('Approximate', 'weight', ': ', 'total', 'product', 'mm' suffix)
-- split() splits strings into parts and extracts first part, e.g: "40 mm weight approx."
+  - Convert value into string
+  - Remove ('Approximate', 'weight', ': ', 'total', 'product', 'mm' suffix)
+  - split() splits strings into parts and extracts first part, e.g: "40 mm weight approx."
+
 
 Group and Standardize "size" Column
 
 This snippet processes the cleaned 'size' column to:
 
-- Convert values to floats.
-- Round them to the nearest whole number.
-- Standardize invalid or non-numeric values by replacing them with 'Unknown'.
+  - Convert values to floats.
+  - Round them to the nearest whole number.
+  - Standardize invalid or non-numeric values by replacing them with 'Unknown'.
 
 ```python
 def group_size(x):
@@ -939,11 +975,13 @@ def group_size(x):
 df['size'] = df['size'].apply(group_size)
 ```
 
+
 Convert 'size' Column to Numeric
 
 ```python
 df['size'] = pd.to_numeric(df['size'], errors='coerce')
 ```
+
 
 Filter Rows Based on Valid Size Range to Remove Outliers
 
@@ -951,6 +989,7 @@ Filter Rows Based on Valid Size Range to Remove Outliers
 new_size = (df['size'] >= 20) & (df['size'] <= 70)  # Adjust range as needed, realistic example 20-70mm
 df = df[new_size]  # Keep only rows within the valid range
 ```
+
 
 Get Count of Each Size of Watches
 
@@ -1014,6 +1053,7 @@ Output:
     62.0        1
     Name: count, dtype: int64
 
+
 Get Average Size of Watches
 
 ```python
@@ -1047,6 +1087,7 @@ new_columns = {
 df = df.rename(columns=new_columns)
 ```
 
+
 Preview First Few Rows
 
 ```python
@@ -1054,7 +1095,6 @@ print(df.head())
 ```
 
 Output:
-
 
                                                     Name     Price  \
     0  Audemars Piguet Royal Oak Offshore Chronograph...   43500.0   
@@ -1281,6 +1321,7 @@ Output:
 <p>100 rows × 12 columns</p>
 </div>
 
+
 Save and Export csv File for Visualization
 
 ```python
@@ -1289,6 +1330,7 @@ luxury_watches = df
 ```python
 luxury_watches.to_csv(r"C:\Users\corvi\OneDrive\Desktop\Data Sets\Luxury_Watches_Final.csv", index=False)
 ```
+
 
 ## Key Findings
 
@@ -1318,6 +1360,7 @@ luxury_watches.to_csv(r"C:\Users\corvi\OneDrive\Desktop\Data Sets\Luxury_Watches
 
 - Material Preferences:
     - Highlighting the most popular materials like stainless steel in marketing campaigns could attract more customers. Rare materials could be used to target high-net-worth individuals.
+
 
 ## Visualization
 
