@@ -17,7 +17,7 @@ This project involves analyzing a dataset of luxury watch listings to uncover in
 
 ## Data Sources
 
-Dataset: Excel file 
+Source: The dataset used for this analysis is the "Watches.csv" file, found on Kaggle. The final version is "Luxury_Watches_Final.csv".
 
 ## Data Overview
 
@@ -28,12 +28,12 @@ The dataset consists of the following columns:
 - **brand:** Watch brand
 - **price:** Price of the watch
 - **model:** Model number
-- **reference:** Reference number
-- **movement type:** Type of movement (e.g., automatic, manual)
-- **case material:** Material used for the case
-- **bracelet material:** Material used for the bracelet
-- **year of production:** Year the watch was produced
-- **condition:** Condition of the watch (e.g., new, used)
+- **ref:** Reference number
+- **mvmnt:** Type of movement (e.g., automatic, manual)
+- **casem:** Material used for the case
+- **bracem:** Material used for the bracelet
+- **yop:** Year the watch was produced
+- **cond:** Condition of the watch (e.g., new, used)
 - **sex:** Gender for which the watch is intended
 - **size:** Diameter of the watch in millimeters
 
@@ -1305,7 +1305,8 @@ luxury_watches.to_csv(r"C:\Users\corvi\OneDrive\Desktop\Data Sets\Luxury_Watches
     - Brands such as Rolex, Patek Philippe, and Omega dominate the dataset. Within these brands, certain models stand out for their popularity and frequency.
 
 - Materials Used:
-    - Case and bracelet materials such as stainless steel and gold are the most common. Rare materials like titanium and ceramic appear less frequently but are associated          with higher prices.
+    - Case and bracelet materials such as stainless steel and gold are the most common. Rare materials like titanium and ceramic appear less frequently but are associated with higher prices.
+
 
 ## Business Insights
 
@@ -1313,11 +1314,11 @@ luxury_watches.to_csv(r"C:\Users\corvi\OneDrive\Desktop\Data Sets\Luxury_Watches
     - The prevalence of mid-sized watches (34–45 mm) indicates strong demand for standard sizes. Brands can consider focusing marketing efforts around this range.
 
 - Target Pricing:
-    - With a clearer understanding of price distribution, pricing strategies for luxury watches can be optimized to target the most frequent price ranges while leveraging          the value of premium-priced items.
+    - With a clearer understanding of price distribution, pricing strategies for luxury watches can be optimized to target the most frequent price ranges while leveraging the value of premium-priced items.
 
 - Material Preferences:
-    - Highlighting the most popular materials like stainless steel in marketing campaigns could attract more customers. Rare materials could be used to target high-net-worth       individuals.
+    - Highlighting the most popular materials like stainless steel in marketing campaigns could attract more customers. Rare materials could be used to target high-net-worth individuals.
 
 ## Visualization
 
-Interactive Tableau dashboard available here
+Interactive Tableau dashboard available here: https://public.tableau.com/views/LuxuryWatchesPriceAnalysis/PricingDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
