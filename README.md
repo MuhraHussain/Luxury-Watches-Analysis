@@ -20,7 +20,7 @@ This project involves analyzing a dataset of luxury watch listings to uncover in
 
 ## Data Sources
 
-Source: The dataset used for this analysis is the "Watches.csv" file, found on Kaggle. The final version is "Luxury_Watches_Final.csv".
+Source: The dataset used for this analysis is the "Watches.csv" file, found on Kaggle. The cleaned version of the file is "Luxury_Watches_Final.csv".
 
 
 ## Data Overview
@@ -37,10 +37,10 @@ The dataset consists of the following columns:
 - **casem:** Material used for the case
 - **bracem:** Material used for the bracelet
 - **yop:** Year the watch was produced
-- **cond:** Condition of the watch (e.g., new, used)
+- **cond:** Condition of the watch (e.g., new, very good)
 - **sex:** Gender for which the watch is intended
 - **size:** Diameter of the watch in millimeters
-
+- **condition:** Condition of the watch (e.g., new, fair)
 
 ## Business Questions Explored
 
