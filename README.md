@@ -1364,4 +1364,4 @@ luxury_watches.to_csv(r"C:\Users\corvi\OneDrive\Desktop\Data Sets\Luxury_Watches
 
 ## Visualization
 
-Interactive Tableau dashboard available here: https://public.tableau.com/views/LuxuryWatchesPriceAnalysis/PricingDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
+Interactive Tableau dashboard available [here.](https://public.tableau.com/views/LuxuryWatchesPriceAnalysis/PricingDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
